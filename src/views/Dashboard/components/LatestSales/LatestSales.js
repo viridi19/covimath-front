@@ -10,9 +10,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-
-const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
+import Map from './components/Map';
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -49,13 +47,7 @@ const LatestSales = props => {
         className={clsx(classes.root, className)}
       >
         <CardContent>
-          <ComposableMap>
-            <Geographies geography={geoUrl}>
-              {({ geographies }) =>
-                geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} />)
-              }
-            </Geographies>
-        </ComposableMap>
+          <Map />
         </CardContent>
       </Card>
     </div>
