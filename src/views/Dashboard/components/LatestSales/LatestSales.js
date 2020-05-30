@@ -1,14 +1,11 @@
 import React from 'react';
+
 import {
   Card,
-  CardHeader,
   CardContent,
-  CardActions,
-  Divider,
-  Button
+  TextField
 } from '@material-ui/core';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
@@ -19,9 +16,8 @@ const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-map
 
 const useStyles = makeStyles(() => ({
   root: {},
-  chartContainer: {
-    height: 400,
-    position: 'relative'
+  searchInput: {
+    background: '#fff',
   },
   actions: {
     justifyContent: 'flex-end'
@@ -34,42 +30,35 @@ const LatestSales = props => {
   const classes = useStyles();
 
   return (
-    <Card
-      {...rest}
-      className={clsx(classes.root, className)}
-    >
-      <CardHeader
-        action={
-          <Button
-            size="small"
-            variant="text"
-          >
-            Last 7 days <ArrowDropDownIcon />
-          </Button>
-        }
-        title="Latest Sales"
+    <div>
+      <TextField
+        className={classes.searchInput}
+        variant="outlined"
+        color="white"
+        fullWidth
+        placeholder="Ex: São Paulo"
+        label="Buscar cidades"
+        InputLabelProps={{
+          shrink: true,
+        }}
       />
-      <Divider />
-      <CardContent>
-        <ComposableMap>
-        <Geographies geography={geoUrl}>
-          {({ geographies }) =>
-            geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} />)
-          }
-        </Geographies>
-      </ComposableMap>
-      </CardContent>
-      <Divider />
-      <CardActions className={classes.actions}>
-        <Button
-          color="primary"
-          size="small"
-          variant="text"
-        >
-          Overview <ArrowRightIcon />
-        </Button>
-      </CardActions>
-    </Card>
+      <br />
+      <br />
+      <Card
+        {...rest}
+        className={clsx(classes.root, className)}
+      >
+        <CardContent>
+          <ComposableMap>
+            <Geographies geography={geoUrl}>
+              {({ geographies }) =>
+                geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} />)
+              }
+            </Geographies>
+        </ComposableMap>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 
