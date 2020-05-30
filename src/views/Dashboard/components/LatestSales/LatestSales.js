@@ -1,8 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import { Bar } from 'react-chartjs-2';
-import { makeStyles } from '@material-ui/styles';
 import {
   Card,
   CardHeader,
@@ -13,8 +9,13 @@ import {
 } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import clsx from 'clsx';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/styles';
 
-import { data, options } from './chart';
+import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+
+const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -50,12 +51,13 @@ const LatestSales = props => {
       />
       <Divider />
       <CardContent>
-        <div className={classes.chartContainer}>
-          <Bar
-            data={data}
-            options={options}
-          />
-        </div>
+        <ComposableMap>
+        <Geographies geography={geoUrl}>
+          {({ geographies }) =>
+            geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} />)
+          }
+        </Geographies>
+      </ComposableMap>
       </CardContent>
       <Divider />
       <CardActions className={classes.actions}>
