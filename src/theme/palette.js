@@ -9,7 +9,7 @@ export default {
   primary: {
     contrastText: white,
     dark: colors.indigo[900],
-    main: "#4CFA50",
+    main: "#409944",
     light: colors.indigo[100]
   },
   secondary: {
