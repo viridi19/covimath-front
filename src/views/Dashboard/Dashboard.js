@@ -30,7 +30,7 @@ const Dashboard = () => {
       >
         <Grid
           item
-          lg={6}
+          lg={12}
           md={12}
           xl={9}
           xs={12}
