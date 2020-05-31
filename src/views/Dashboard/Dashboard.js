@@ -5,7 +5,8 @@ import { Grid } from '@material-ui/core';
 import {
   GlobalMapCard,
   TwoCitiesCard,
-  ChartAreaSection
+  ChartAreaSection,
+  NewsSection
 } from './components';
 
 const useStyles = makeStyles(theme => ({
@@ -49,6 +50,15 @@ const Dashboard = () => {
           xs={12}
         >
           <ChartAreaSection />
+        </Grid>
+        <Grid
+          item
+          lg={12}
+          md={12}
+          xl={9}
+          xs={12}
+        >
+          <NewsSection />
         </Grid>
       </Grid>
     </div>

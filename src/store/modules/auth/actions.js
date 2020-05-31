@@ -18,6 +18,14 @@ export function fetchFailure() {
   };
 }
 
+export function selectCity(city) {
+  return {
+    type: '@city/SELECT_CITY',
+    payload: { city }
+  };
+}
+
+
 export function selectDiff(diff) {
   return {
     type: '@city/SELECT_DIFF',

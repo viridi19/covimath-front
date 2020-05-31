@@ -6,7 +6,7 @@ export default [
     { name: "Salvador", coordinates: [-38.490317, -12.9015883] },
     { name: "Fortaleza", coordinates: [-38.5891584, -3.7899266] },
     { name: "Brasília", coordinates: [-48.0779611, -15.7744219] },
-    { name: "Brasília", coordinates: [-49.4446947, -16.6954997] },
+    { name: "Vitória", coordinates: [-49.4446947, -16.6954997] },
     { name: "Goiânia", coordinates: [-48.0779611, -15.7744219] },
     { name: "São Luís", coordinates: [-44.4383634, -2.6271281] },
     { name: "Cuiabá", coordinates: [-48.0779611, -15.7744219] },

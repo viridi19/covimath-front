@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
@@ -40,50 +40,21 @@ const Topbar = props => {
     dispatch(fetchRequest());
   });
 
-  useEffect(() => {
-    fetchList();
-  }, []);
-
   return (
     <AppBar
       {...rest}
       className={clsx(classes.root, className)}
     >
       <Toolbar>
-        <RouterLink to="/">
-          <img
-            alt="Logo"
-            src="images/logos/logo--white.svg"
-            className={classes.logo}
-          />
-        </RouterLink>
         <SearchAutoComplete />
         <div className={classes.flexGrow} />
-        <Hidden mdDown>
-          <IconButton color="inherit">
-            <Badge
-              badgeContent={notifications.length}
-              color="primary"
-              variant="dot"
-            >
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          <IconButton
-            className={classes.signOutButton}
-            color="inherit"
-          >
-            <InputIcon />
-          </IconButton>
-        </Hidden>
-        <Hidden lgUp>
-          <IconButton
-            color="inherit"
-            onClick={onSidebarOpen}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Hidden>
+          <RouterLink to="/" mdDown>
+            <img
+              alt="Logo"
+              src="images/logos/logo.png"
+              className={classes.logo}
+            />
+          </RouterLink>
       </Toolbar>
     </AppBar>
   );

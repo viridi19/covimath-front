@@ -11,7 +11,7 @@ import {
   Grid,
 } from '@material-ui/core';
 
-import Section from './components/Section';
+import NewsCard from './components/NewsCard';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,10 +35,10 @@ const TwoCitiesCard = props => {
         alignItems="center"
       >
         <Grid item xs={6}>
-          <Section title="Sua Cidade" content={city?.name} />
+          <NewsCard title={`Notícias de ${city?.name}`} />
         </Grid>
         <Grid item xs={6}>
-          <Section title="Cidade mais similar" content={diff?.name} />
+          <NewsCard title={`Notícias de ${diff?.name}`} />
         </Grid>
       </Grid>
   );

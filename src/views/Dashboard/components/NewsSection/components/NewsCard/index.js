@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     },
   });
 
-export default function Section({ title, content }) {
+export default function NewsCard({ title, content }) {
     const classes = useStyles();
 
     return (

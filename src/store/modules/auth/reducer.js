@@ -2,7 +2,7 @@ import produce from 'immer';
 
 const INITIAL_STATE = {
   list: [],
-  selected: null,
+  city: null,
   diff: null,
   loading: false,
 };
@@ -21,6 +21,10 @@ export default function auth(state = INITIAL_STATE, action) {
       }
       case '@city/FETCH_FAILURE': {
         draft.loading = false;
+        break;
+      }
+      case '@city/SELECT_CITY': {
+        draft.city = action.payload.city;
         break;
       }
       case '@city/SELECT_DIFF': {
