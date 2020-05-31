@@ -1,6 +1,6 @@
 import React from 'react';
-import { Doughnut } from 'react-chartjs-2';
 import clsx from 'clsx';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import {
@@ -21,6 +21,8 @@ const useStyles = makeStyles(theme => ({
 
 const ChartAreaSection = props => {
   const { className, ...rest } = props;
+  const city = useSelector(state => state.auth.city);
+  const diff = useSelector(state => state.auth.diff);
 
   const classes = useStyles();
   const theme = useTheme();

@@ -71,17 +71,28 @@ export default function SearchAutoComplete() {
 
   const handleSelectCity = useCallback(async (city) => {
     try {
-      const response = await api.post('data');
+      const response = await api.post('data' , { city },
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
 
       console.log(response.data)
     } catch (err) {
       console.log(err)
     }
     dispatch(selectCity(city));
-  }, []);
+  }, [dispatch]);
 
   const handleChange = (event) => {
-    handleSelectCity(event.target.value);
+    const city = event.target.value;
+
+    if(!city) {
+      return
+    }
+
+    handleSelectCity(city.name);
   };
 
   return (
@@ -98,7 +109,6 @@ export default function SearchAutoComplete() {
             root: classes.inputRoot,
             input: classes.inputInput,
           }}
-          inputProps={{ 'aria-label': 'search' }}
         >
           {list.map((option) => (
             <MenuItem key={option.name} value={option}>
