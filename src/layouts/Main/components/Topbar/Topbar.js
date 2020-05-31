@@ -1,13 +1,10 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import { AppBar, Toolbar, Badge, Hidden, IconButton, TextField } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
-import InputIcon from '@material-ui/icons/Input';
+import { AppBar, Toolbar } from '@material-ui/core';
 
 import SearchAutoComplete from '../../../../components/SearchAutoComplete';
 
@@ -34,11 +31,13 @@ const Topbar = props => {
 
   const classes = useStyles();
 
-  const [notifications] = useState([]);
-
   const fetchList = useCallback(() => {
     dispatch(fetchRequest());
-  });
+  }, [dispatch]);
+
+  useEffect(() => {
+    fetchList();
+  }, [])
 
   return (
     <AppBar
