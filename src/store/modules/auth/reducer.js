@@ -16,6 +16,7 @@ export default function auth(state = INITIAL_STATE, action) {
       }
       case '@city/FETCH_SUCCESS': {
         draft.list = action.payload.list;
+        draft.city = action.payload.city;
         draft.loading = false;
         break;
       }

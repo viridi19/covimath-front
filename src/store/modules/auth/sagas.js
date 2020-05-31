@@ -1,25 +1,21 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 
-// import api from '../../../services/api';
-
-// import axios from 'axios';
-
-import data from '../../../assets/data';
+import api from '../../../services/api';
 
 import { fetchSuccess, fetchFailure } from './actions';
 
 export function* fetchList({ payload }) {
   try {
-    const { city } = payload;
+    const { name } = payload;
 
-    // const response = yield call(axios.get, 'https://github.com/viridi19/mock-data/blob/master/capitals.js', {
-    //  params: {
-    //    city
-    //  }
-    //});
+    const response = yield call(api.get, `data?city=${name}`);
 
-    yield put(fetchSuccess(data));
+    let { similar, ...data } = response.data;
+
+    data.name = data.searched_city
+
+    yield put(fetchSuccess(data, similar));
 
   } catch (err) {
     toast.error('Falha na autenticação, verifique seus dados');

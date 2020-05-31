@@ -1,26 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { makeStyles, useTheme } from '@material-ui/styles';
 import {
-  Card,
-  CardHeader,
-  CardContent,
-  Divider,
   Grid,
 } from '@material-ui/core';
 
-import NewsCard from './components/NewsCard';
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    height: '100%'
-  },
-  content: {
-    padding: 0
-  }
-}));
+import NewsCityCard from './components/NewsCityCard';
+import NewsDiffCard from './components/NewsDiffCard';
 
 const TwoCitiesCard = props => {
   const { className, ...rest } = props;
@@ -35,10 +21,10 @@ const TwoCitiesCard = props => {
         alignItems="center"
       >
         <Grid item xs={6}>
-          <NewsCard title={`Notícias de ${city?.name}`} />
+          <NewsCityCard title={`Notícias de ${city?.name}`} />
         </Grid>
         <Grid item xs={6}>
-          <NewsCard title={`Notícias de ${diff?.name}`} />
+          <NewsDiffCard title={`Notícias de ${diff?.name}`} />
         </Grid>
       </Grid>
   );

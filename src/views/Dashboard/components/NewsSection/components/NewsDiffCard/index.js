@@ -40,7 +40,7 @@ const useStyles = makeStyles({
 		}
   });
 
-export default function NewsCard({ title, content }) {
+export default function NewsDiffCard() {
     const classes = useStyles();
     const res = {
         news: {
@@ -81,39 +81,39 @@ export default function NewsCard({ title, content }) {
           ]
         }
       }
-			const city = "Sorocaba"
-			
-			const date = new Date(res.news.publishedAt) // formated_Date - SDK returned date
-			const formatedDate = `${date.getDate()}, ${date.getMonth() +1 }, ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+	const city = "Sorocaba"
+	
+	const date = new Date(res.news.publishedAt) // formated_Date - SDK returned date
+	const formatedDate = `${date.getDate()}, ${date.getMonth() +1 }, ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
 
     return (
-			<Card className={classes.root} >
-					<CardContent className={classes.content}>
-						<Typography className={classes.title} component="h3" color="textSecondary" gutterBottom>
-							Noticia de maior destaque
-						</Typography>
-						<Typography variant="h2" component="h2">
-							<a className={classes.details} display="inline" href={res.url} className="cityLink" target="_blank">{city}</a>
-							<p className={classes.datetime}>{res.news.author}  {formatedDate}</p>
-						</Typography>
-						<Typography variant="body2" color="textSecondary">
-							{res.nlu.keywords.map((word, _in, _arr)=>{
-									if (_arr.length - 1 === _in) {
-									return <p className={classes.bullWord}>{word.text}</p>;
-								} else {
-									return <><p className={classes.bullWord}>{word.text}</p> <span className={classes.bullet}>•</span> </>
-								}
-							})}
-						</Typography>
-						<Typography variant="h4" component="h4">
-								{res.news.title}
-						</Typography>
-					</CardContent>
-				<CardMedia
-					className={classes.cover}
-					image={res.news.urlToImage}
-					title="New image"
-				/>
-			</Card>
+		<Card className={classes.root} >
+			<CardContent className={classes.content}>
+				<Typography className={classes.title} component="h3" color="textSecondary" gutterBottom>
+					Noticia de maior destaque
+				</Typography>
+				<Typography variant="h2" component="h2">
+					<a className={classes.details} display="inline" href={res.url} className="cityLink" target="_blank">{city}</a>
+					<p className={classes.datetime}>{res.news.author}  {formatedDate}</p>
+				</Typography>
+				<Typography variant="body2" color="textSecondary">
+					{res.nlu.keywords.map((word, _in, _arr)=>{
+							if (_arr.length - 1 === _in) {
+							return <p className={classes.bullWord}>{word.text}</p>;
+						} else {
+							return <> <p className={classes.bullWord}>{word.text}</p> <span className={classes.bullet}>•</span> </>
+						}
+					})}
+				</Typography>
+				<Typography variant="h4" component="h4">
+						{res.news.title}
+				</Typography>
+			</CardContent>
+			<CardMedia
+				className={classes.cover}
+				image={res.news.urlToImage}
+				title="New image"
+			/>
+		</Card>
     )
 }

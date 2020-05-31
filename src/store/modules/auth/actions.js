@@ -1,14 +1,14 @@
-export function fetchRequest(city) {
+export function fetchRequest(name) {
   return {
     type: '@city/FETCH_REQUEST',
-    payload: { city },
+    payload: { name },
   };
 }
 
-export function fetchSuccess(list) {
+export function fetchSuccess(city, list) {
   return {
     type: '@city/FETCH_SUCCESS',
-    payload: { list },
+    payload: { city, list },
   };
 }
 

@@ -6,15 +6,18 @@ const useStyles = makeStyles({
     root: {
       width: '100%',
     },
+    table: {
+        height: '100%',
+    }
   });
 
-export default function Section({ color, title, content }) {
+export default function Section({ color, title, content, list,percent }) {
     const classes = useStyles();
 
     return (
-        <Card className={classes.root} >
+        <Card className={classes.root} style={{ width: '100%' }} >
             <CardHeader title={title} />
-            <CardContent style={{ backgroundColor: color }}>
+            <CardContent style={{ backgroundColor: color, width: '100%' }}>
                 <div style={{ marginBottom: 30, marginTop: 10 }}>
                     <Typography
                         align="center"
@@ -22,6 +25,7 @@ export default function Section({ color, title, content }) {
                         style={{ color: '#fff', fontSize: 40 }}
                     >
                         {content}
+                        {!content && '--'}
                     </Typography>
                 </div>
                 <div style={{ marginBottom: 30 }}>
@@ -30,7 +34,7 @@ export default function Section({ color, title, content }) {
                         component="p"
                         style={{ color: '#fff', fontSize: 40 }}
                     >
-                        86%
+                        {percent}
                     </Typography>
                 </div>
                 <Table style={{ backgroundColor: '#fff' }} className={classes.table} aria-label="simple table">
@@ -42,8 +46,12 @@ export default function Section({ color, title, content }) {
                     </TableHead>
                     <TableBody>
                         <TableRow>
-                        <TableCell>34.0</TableCell>
-                        <TableCell align="right">25.0</TableCell>
+                            {!list && (
+                                <TableCell> -- </TableCell>
+                            )}
+                            {list && list.map(item => (
+                                <TableCell key={item.name}>{item.value}</TableCell>
+                            ))}
                         </TableRow>
                     </TableBody>
                 </Table>

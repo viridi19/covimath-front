@@ -3,10 +3,11 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { InputBase, Button, TextField, MenuItem } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
 
-import { selectCity } from '../../store/modules/auth/actions';
+import { selectCity, fetchRequest } from '../../store/modules/auth/actions';
 import api from '../../services/api';
+
+import data from '../../assets/data';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -65,34 +66,22 @@ const useStyles = makeStyles((theme) => ({
 export default function SearchAutoComplete() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const list = useSelector(state => state.auth.list);
   const city = useSelector(state => state.auth.city);
-  const [search, setSearch] = React.useState(false);
 
   const handleSelectCity = useCallback(async (city) => {
-    try {
-      const response = await api.post('data' , { city },
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-
-      console.log(response.data)
-    } catch (err) {
-      console.log(err)
-    }
-    dispatch(selectCity(city));
+    dispatch(fetchRequest(city));
   }, [dispatch]);
 
   const handleChange = (event) => {
-    const city = event.target.value;
+    const selected = event.target.value;
 
-    if(!city) {
+    const c = data.find(item => item.name === selected)
+
+    if(!c) {
       return
     }
 
-    handleSelectCity(city.name);
+    handleSelectCity(c.name);
   };
 
   return (
@@ -103,15 +92,15 @@ export default function SearchAutoComplete() {
           placeholder="Buscar cidade"
           variant="outlined"
           select
-          value={city}
+          value={city?.name}
           onChange={handleChange}
           classes={{
             root: classes.inputRoot,
             input: classes.inputInput,
           }}
         >
-          {list.map((option) => (
-            <MenuItem key={option.name} value={option}>
+          {data.map((option) => (
+            <MenuItem key={option.name} value={option.name}>
               {option.name}
             </MenuItem>
           ))}

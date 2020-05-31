@@ -45,7 +45,7 @@ const MapChart = () => {
       {list.map((city) => (
         <Marker
           key={city.name}
-          coordinates={city.coordinates}
+          coordinates={city.coord_city}
           onClick={() => selectCompare(city)}
         >
           <circle
@@ -57,9 +57,10 @@ const MapChart = () => {
           />
           <text
             textAnchor="middle"
+            y={-15}
             style={{ fontFamily: "system-ui", fill: "#5D5A6D", cursor: 'pointer' }}
           >
-            {city.name} 86%
+            86% {city.name}
           </text>
         </Marker>
       ))}

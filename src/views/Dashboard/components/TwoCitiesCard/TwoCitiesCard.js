@@ -35,10 +35,10 @@ const TwoCitiesCard = props => {
         alignItems="center"
       >
         <Grid item xs={6}>
-          <Section color="#AAE3E0" title="Sua Cidade" content={city?.name} />
+          <Section color="#AAE3E0" title="Sua Cidade" content={city?.name} list={city?.IDH} />
         </Grid>
         <Grid item xs={6}>
-          <Section color="#7CAE7E" title="Cidade mais similar" content={diff?.name} />
+          <Section color="#7CAE7E" title="Cidade mais similar" content={diff?.name} list={diff?.IDH} />
         </Grid>
       </Grid>
   );
