@@ -1,5 +1,5 @@
 import React from 'react';
-import { Doughnut } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/styles';
@@ -34,8 +34,8 @@ const ChartAreaSection = props => {
         title="Gráficos"
       />
       <Divider />
-      <CardContent className={classes.content}>
-        
+      <CardContent>
+        <Line />
       </CardContent>
     </Card>
   );

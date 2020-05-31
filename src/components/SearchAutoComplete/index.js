@@ -6,6 +6,7 @@ import { InputBase, Button, TextField, MenuItem } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
 import { selectCity } from '../../store/modules/auth/actions';
+import api from '../../services/api';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -29,8 +30,7 @@ const useStyles = makeStyles((theme) => ({
     },
     marginLeft: 0,
     width: '100%',
-    minWidth: 200,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('xl')]: {
       marginLeft: theme.spacing(1),
       width: 'auto',
     },
@@ -69,7 +69,14 @@ export default function SearchAutoComplete() {
   const city = useSelector(state => state.auth.city);
   const [search, setSearch] = React.useState(false);
 
-  const handleSelectCity = useCallback((city) => {
+  const handleSelectCity = useCallback(async (city) => {
+    try {
+      const response = await api.post('data');
+
+      console.log(response.data)
+    } catch (err) {
+      console.log(err)
+    }
     dispatch(selectCity(city));
   }, []);
 
@@ -78,7 +85,7 @@ export default function SearchAutoComplete() {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
+    <div style={{ display: 'flex', flexDirection: 'row', flex: 1 }}>
       <div className={classes.search}>
         <TextField
           fullWidth
@@ -100,7 +107,6 @@ export default function SearchAutoComplete() {
           ))}
         </TextField>
       </div>
-      <Button style={{ marginLeft: 10 }} variant="contained" color="white">Pesquisar</Button>
     </div>
   );
 }
