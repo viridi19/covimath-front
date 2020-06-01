@@ -14,6 +14,9 @@ const useStyles = makeStyles(theme => ({
   root: {
     boxShadow: 'none'
   },
+  toolBar: {
+    background: 'rgb(124, 174, 126)'
+  },
   logo: {
     marginRight: 20
   },
@@ -41,7 +44,9 @@ const Topbar = props => {
       {...rest}
       className={clsx(classes.root, className)}
     >
-      <Toolbar>
+      <Toolbar
+        className={classes.toolBar}
+      >
         <SearchAutoComplete />
         <div className={classes.flexGrow} />
           <RouterLink to="/" mdDown>
