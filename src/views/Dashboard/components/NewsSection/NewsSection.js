@@ -16,7 +16,6 @@ const TwoCitiesCard = props => {
   return (
       <Grid
         container
-        alignItems="center"
         spacing={1}
         alignItems="center"
       >

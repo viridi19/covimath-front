@@ -94,6 +94,7 @@ export default function SearchAutoComplete() {
           select
           value={city?.name}
           onChange={handleChange}
+          size="small"
           classes={{
             root: classes.inputRoot,
             input: classes.inputInput,
