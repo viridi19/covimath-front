@@ -51,15 +51,6 @@ const Dashboard = () => {
         >
           <ChartAreaSection />
         </Grid>
-        <Grid
-          item
-          lg={12}
-          md={12}
-          xl={9}
-          xs={12}
-        >
-          <NewsSection />
-        </Grid>
       </Grid>
     </div>
   );

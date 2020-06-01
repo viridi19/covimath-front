@@ -50,7 +50,7 @@ export default function Section({ color, title, content, list,percent }) {
                                 <TableCell> -- </TableCell>
                             )}
                             {list && list.map(item => (
-                                <TableCell key={item.name}>{item.value}</TableCell>
+                                <TableCell key={item.name}>{Math.floor((Math.random() * 100) + 1)}</TableCell>
                             ))}
                         </TableRow>
                     </TableBody>

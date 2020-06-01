@@ -60,7 +60,7 @@ const MapChart = () => {
             y={-15}
             style={{ fontFamily: "system-ui", fill: "#5D5A6D", cursor: 'pointer' }}
           >
-            86% {city.name}
+            {Math.floor((Math.random() * 100) + 1)} {city.name}
           </text>
         </Marker>
       ))}
